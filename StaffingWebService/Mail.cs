@@ -5,14 +5,13 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using SendGridMail;
-using SendGridMail.Transport;
-using StaffingWebService.Data;
-using StaffingWebService.Model;
+using SendGrid;
+using Cellenza.Service.Data;
+using Cellenza.Service.Model;
 using System.Runtime.InteropServices;
 using System.Web;
 
-namespace StaffingWebService
+namespace Cellenza.Service
 {
     public class Mail
     {
@@ -44,7 +43,7 @@ namespace StaffingWebService
         public static void Send(int? consultantId, MailType type, object item)
         {
             // Create the email object first, then add the properties.
-            var newMessage = SendGrid.GetInstance();
+            var newMessage = new SendGridMessage();
 
             var sender = CreateSender();
             IEnumerable<string> recipients;
@@ -58,10 +57,10 @@ namespace StaffingWebService
                 attachement = GetCRAPdfPath(consultantId, (CompteRenduActivite)item);
 
             CreateMail(sender, recipients, recipientsCc, mailObject, body, newMessage, attachement);
-            var transportSMTP = CreateCredentials();
-
+            
+            var transport = CreateCredentials();
             // Send the email.
-            transportSMTP.Deliver(newMessage);
+            transport.Deliver(newMessage);
         }
 
         private static string CreateObject(MailType type)
@@ -155,7 +154,7 @@ namespace StaffingWebService
             return sender;
         }
 
-        private static SMTP CreateCredentials()
+        private static ITransport CreateCredentials()
         {
             // Create network credentials to access your SendGrid account.
             var username = ConfigurationManager.AppSettings["SMTPUsername"];
@@ -163,9 +162,9 @@ namespace StaffingWebService
 
             var credentials = new NetworkCredential(username, pswd);
 
-            // Create an SMTP transport for sending email.
-            var transportSMTP = SMTP.GetInstance(credentials);
-            return transportSMTP;
+            ITransport transport = new Web(credentials);
+
+            return transport;
         }
 
         private static void CreateMail(MailAddress sender, IEnumerable<string> recipients,
@@ -181,7 +180,7 @@ namespace StaffingWebService
 
             foreach (var recipient in recipientsCc)
             {
-                newMessage.AddCc(recipient);
+                newMessage.AddTo(recipient);
             }
 
             // Add a message body in HTML format.

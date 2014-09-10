@@ -3,7 +3,7 @@
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
 -- Date Created: 05/22/2013 18:32:45
--- Generated from EDMX file: C:\Users\Jonathan\Desktop\DEV\Main\Staffing\StaffingWebService\Data\StaffingModel.edmx
+-- Generated from EDMX file: C:\Users\Jonathan\Desktop\DEV\Main\Staffing\Cellenza.Service\Data\StaffingModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;

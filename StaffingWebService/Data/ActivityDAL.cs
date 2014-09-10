@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
-using StaffingWebService.Data.DataExtention;
-using StaffingWebService.Model;
+using Cellenza.Service.Data.DataExtention;
+using Cellenza.Service.Model;
 
-namespace StaffingWebService.Data
+namespace Cellenza.Service.Data
 {
     public class ActivityDAL
     {
-        internal static CompteRenduActivite CreateCRA(int consultantId, int year, int month)
+        internal static CompteRenduActivite CreateCra(int consultantId, int year, int month)
         {
             using (var entity = new StaffingModelContainer())
             {
@@ -85,7 +85,7 @@ namespace StaffingWebService.Data
             return activityDays;
         }
 
-        internal static IEnumerable<CompteRenduActivite> GetCRA(int? consultantId, int? year, int? month)
+        internal static IEnumerable<CompteRenduActivite> GetCra(int? consultantId, int? year, int? month)
         {
             IEnumerable<CompteRenduActivite> cras;
 
@@ -100,6 +100,10 @@ namespace StaffingWebService.Data
                      select cra).ToList();
 
                 cras = items.Select(o => o.CreateCompteRenduActivite()).ToList();
+                foreach (var compteRenduActivite in cras)
+                {
+                    compteRenduActivite.ActivityWeeks = GetActivities(compteRenduActivite.Id).ToList();
+                }
             }
 
             return cras;
@@ -220,7 +224,7 @@ namespace StaffingWebService.Data
                     break;
             }
 
-            return GetCRA(null, null, null);
+            return GetCra(null, null, null);
         }
     }
 }

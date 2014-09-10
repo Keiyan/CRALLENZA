@@ -1,7 +1,7 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
 
-namespace StaffingWebService
+namespace Cellenza.Service
 {
     public class PDFGenerator
     {

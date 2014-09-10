@@ -7,7 +7,7 @@
 //using System.Security.Cryptography;
 //using System.Text;
 
-//namespace StaffingWebService
+//namespace Cellenza.Service
 //{
 //    // Reference: http://tools.ietf.org/search/draft-jones-json-web-token-00
 //    //

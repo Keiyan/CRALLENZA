@@ -1,4 +1,4 @@
-﻿namespace StaffingWebService.Model
+﻿namespace Cellenza.Service.Model
 {
     public class Client
     {

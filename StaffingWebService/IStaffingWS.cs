@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.ServiceModel;
 using System.Threading.Tasks;
-using StaffingWebService.Model;
+using Cellenza.Service.Model;
 
-namespace StaffingWebService
+namespace Cellenza.Service
 {
     [ServiceContract]
     public interface IStaffingWS

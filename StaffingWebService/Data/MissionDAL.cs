@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using StaffingWebService.Data.DataExtention;
-using StaffingWebService.Model;
+using Cellenza.Service.Data.DataExtention;
+using Cellenza.Service.Model;
 
-namespace StaffingWebService.Data
+namespace Cellenza.Service.Data
 {
     internal class MissionDAL
     {
