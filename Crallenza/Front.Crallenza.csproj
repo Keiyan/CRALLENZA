@@ -309,6 +309,7 @@
     <Content Include="Scripts\vendors\responsive-calendar\0.7\js\responsive-calendar.min.js.map">
       <DependentUpon>responsive-calendar.min.js</DependentUpon>
     </Content>
+    <Content Include="Views\Home\Gestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
