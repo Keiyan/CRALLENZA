@@ -1,3 +1,4 @@
+using Cellenza.Service.Business;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace Cellenza.API.Areas.CRAApi
 {
     public class CraController : ApiController
     {
-        public IList<string> Get(int? year = null, int? month = null, string user = null)
+        public string Get(int? year = null, int? month = null, string user = null)
         {
-            return new List<string>(new string[] { string.Format("{0}", year), string.Format("{0}", month), string.Format("{0}", user) });
+            return CraBl.GetCra(year, month, user);
         }
 
         [HttpPost]
