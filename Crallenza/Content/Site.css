@@ -179,6 +179,7 @@ textarea {
          opacity: .5;
     }
 
-    .responsive-calendar .day .active {
-        background-color: #b1cd00;
-    }
+    .responsive-calendar .day.today a {
+    background: #b1cd00;
+    color: #ffffff;
+}

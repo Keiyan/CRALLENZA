@@ -225,6 +225,14 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\vendors\FullCalendar\calendar.css" />
+    <Content Include="Scripts\vendors\FullCalendar\fullcalendar.css" />
+    <Content Include="Scripts\vendors\FullCalendar\fullcalendar.js" />
+    <Content Include="Scripts\vendors\FullCalendar\fullcalendar.min.js" />
+    <Content Include="Scripts\vendors\FullCalendar\fullcalendar.print.css" />
+    <Content Include="Scripts\vendors\FullCalendar\gcal.js" />
+    <Content Include="Scripts\vendors\FullCalendar\jquery-ui.custom.min.js" />
+    <Content Include="Scripts\vendors\FullCalendar\jquery.min.js" />
     <Content Include="Scripts\vendors\responsive-calendar\0.7\css\responsive-calendar.css" />
     <Content Include="Scripts\vendors\responsive-calendar\0.7\example\index.html" />
     <Content Include="Scripts\vendors\responsive-calendar\0.7\img\concrete.jpg" />
@@ -277,6 +285,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\vendors\responsive-calendar\0.7\css\less\responsive-calendar.less" />
     <Content Include="Scripts\vendors\responsive-calendar\0.7\js\coffee\responsive-calendar.coffee" />
+    <Content Include="Scripts\vendors\responsive-calendar\0.7\js\responsive-calendar.min.js.map">
+      <DependentUpon>responsive-calendar.min.js</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
