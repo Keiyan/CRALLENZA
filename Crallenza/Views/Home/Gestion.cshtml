@@ -26,10 +26,10 @@
                         }
                     },
                     title: {
-                        text: 'Solde jours de congé/RTT 2014'
+                        text: 'Taux de remplissage  sept 2014'
                     },
                     tooltip: {
-                        pointFormat: '{series.name}: <b>{point.percentage}</b>'
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
                     },
                     plotOptions: {
                         pie: {
@@ -46,11 +46,17 @@
                         type: 'pie',
                         name: 'Nb jours',
                         data: [
-                            ['RTT restant', 8],
-                            ['CP restant', 25],
-                            ['RTT déposés', 4],
-                            ['CP déposés', 3]
-                        ]
+                                 {
+                                    name: 'Cra validés',
+                                    y: 88.2,
+                                    color: '#29bed6'
+                                },
+                                , {
+                                    name: 'Cra manquants',
+                                    y: 11.8,
+                                    color: '#dd1578'
+                                }]
+
                     }]
                 });
             });
@@ -111,13 +117,16 @@
                     },
                     series: [{
                         name: 'Acquis',
-                        data: [5, 3]
+                        data: [5, 3],
+                        color: '#612084'
                     }, {
                         name: 'pris',
-                        data: [2, 2]
+                        data: [2, 2],
+                        color: '#29bed6'
                     }, {
                         name: 'solde',
-                        data: [3, 4]
+                        data: [3, 4],
+                        color: '#dd1578'
                     }]
                 });
             });
