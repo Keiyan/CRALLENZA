@@ -8,7 +8,7 @@ using Cellenza.Service.Model;
 
 namespace Cellenza.Service.Data
 {
-    public class ActivityDAL
+    public class ActivityDal
     {
         internal static CompteRenduActivite CreateCra(int consultantId, int year, int month)
         {
@@ -109,7 +109,7 @@ namespace Cellenza.Service.Data
             return cras;
         }
 
-        internal static CompteRenduActivite GetCRAFromId(int craId)
+        internal static CompteRenduActivite GetCraFromId(int craId)
         {
             using (var entity = new StaffingModelContainer())
             {
@@ -126,7 +126,7 @@ namespace Cellenza.Service.Data
 
         internal static IEnumerable<ActivityWeek> GetActivities(int craId)
         {
-            var cra = GetCRAFromId(craId);
+            var cra = GetCraFromId(craId);
 
             if (cra == null)
             {
@@ -203,7 +203,7 @@ namespace Cellenza.Service.Data
             }
         }
 
-        public static IEnumerable<CompteRenduActivite> UpdateCRA(CompteRenduActivite compteRenduActivite)
+        public static IEnumerable<CompteRenduActivite> UpdateCra(CompteRenduActivite compteRenduActivite)
         {
             using (var entity = new StaffingModelContainer())
             {

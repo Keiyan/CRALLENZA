@@ -8,7 +8,7 @@ namespace Cellenza.Service.Business
         public static string GetCra(int? year, int? month, string user)
         {
             var consultant = ConsultantBl.GetConsultantByName(user);
-            var cras = ActivityDAL.GetCra(consultant != null ? (int?)consultant.Id : null, year, month);
+            var cras = ActivityDal.GetCra(consultant != null ? (int?)consultant.Id : null, year, month);
             var result = JsonConvert.SerializeObject(cras);
             return result;
         }
