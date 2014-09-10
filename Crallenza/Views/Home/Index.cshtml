@@ -201,7 +201,7 @@
             function GenerateCRA() {
                 jQuery.support.cors = true;
                 $.ajax({
-                    url: 'http://localhost:4631/CRA/2014/09/TRAN',
+                    url: 'http://localhost:4631/CRA/2014/08/pamphile',
                     type: 'GET',
                     dataType: 'json',
                     beforeSend: function () {
@@ -209,10 +209,11 @@
                     },
                     success: function (data) {
                         WriteResponse(data);
+                        $("#loading").dialog('close');
                     },
                     error: function (x, y, z) {
                         alert(x + '\n' + y + '\n' + z);
-                        $("#loading").dialog('close')
+                        $("#loading").dialog('close');
                     }
                 });
             }
