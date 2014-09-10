@@ -3,8 +3,10 @@
 }
 
 <div>
-
+    <br /><br />
     <div class="container">
+        <input id="btnAddCra" type="button" class="btn btn-turquoise" value="Saisir CRA" />
+        <br /><br />
         <!-- Responsive calendar - START -->
         <div class="responsive-calendar">
             <div class="controls">
@@ -27,24 +29,64 @@
         </div>
         <!-- Responsive calendar - END -->
     </div>
+
+</div>
+
+<div id="modalCra" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalCraLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <label class="popupTitle">Crallenza</label>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <td>Activité :</td>
+                        <td><input type="text" class="form-control" /> </td>
+                    </tr>
+                    <tr>
+                        <td>Date Début :</td>
+                        <td><input id="dateBegin" type="text" class="form-control" /> </td>
+                    </tr>
+                    <tr>
+                        <td>Date Fin :</td>
+                        <td><input id="dateEnd" type="text" class="form-control" /> </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-grey" data-dismiss="modal">Annuler</button>
+                <button id="submitCra" type="button" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section Scripts {
-<script src="../Scripts/vendors/responsive-calendar/0.7/js/responsive-calendar.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".responsive-calendar").responsiveCalendar({
-            time: '2014-09',
-            translateMonths: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-              'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+    <script src="../Scripts/vendors/responsive-calendar/0.7/js/responsive-calendar.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".responsive-calendar").responsiveCalendar({
+                time: '2014-09',
+                translateMonths: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+                  'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
 
-            events: {
-                "2014-09-30": { "number": 5, "url": "http://w3widgets.com/responsive-slider" },
-                "2014-09-26": { "number": 1, "url": "http://w3widgets.com" },
-                "2014-10-03": { "number": 1 },
-                "2014-09-12": {}
-            }
+                events: {
+                    "2014-09-30": { "number": 5, "url": "http://w3widgets.com/responsive-slider" },
+                    "2014-09-26": { "number": 1, "url": "http://w3widgets.com" },
+                    "2014-10-03": { "number": 1 },
+                    "2014-09-12": {}
+                }
+            });
+
+
+            $("body").on("click", "#btnAddCra", function () {
+                $('#modalCra').modal('show');
+            });
+
+            $('#dateBegin').datepicker();
+            $('#dateEnd').datepicker();
         });
-    });
-</script>
+    </script>
 }
