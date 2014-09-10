@@ -8,7 +8,7 @@
         <input id="btnAddCra" type="button" class="btn btn-turquoise" value="Saisir CRA" />
         <br /><br />
         <!-- Responsive calendar - START -->
-        <div class="responsive-calendar">
+        <div id="calendar" class="responsive-calendar">
             <div class="controls">
                 <a class="pull-left" data-go="prev"><div class="btn btn-primary">Prev</div></a>
                 <h4><span data-head-year></span> <span data-head-month></span></h4>
@@ -87,6 +87,28 @@
 
             $('#dateBegin').datepicker();
             $('#dateEnd').datepicker();
+
+            // click sur le ok validation CRA
+            $("body").on("click", "#submitCra", function () {
+                var dateBegin = $('#dateBegin').val();
+                var dateEnd = $('#dateEnd').val();
+                
+                var dateBeginFormated = dateBegin.substring(6, 10) + '-' + dateBegin.substring(0, 2) + '-' + dateBegin.substring(3, 5);
+                var dateEndFormated = dateEnd.substring(6, 10) + '-' + dateEnd.substring(0, 2) + '-' + dateEnd.substring(3, 5);
+
+                console.log(dateEndFormated);
+                console.log(dateBeginFormated);
+                var data = '{"' + dateEndFormated + '":{"badgeClass":"badge-warning"}}';
+                //data =
+                //    '{"' + dateBeginFormated + '":{number": 5, "badgeClass": "badge-warning", "url": "http://w3widgets.com/responsive-calendar"}}';
+                    
+                
+
+
+                $('#calendar').responsiveCalendar('edit', data);
+
+            });
+
         });
     </script>
 }
