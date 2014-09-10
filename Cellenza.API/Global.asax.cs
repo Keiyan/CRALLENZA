@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace Cellenza.API
@@ -11,7 +12,16 @@ namespace Cellenza.API
     {
         protected void Application_Start()
         {
-            GlobalConfiguration.Configure(WebApiConfig.Register);
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
+            System.Diagnostics.Trace.TraceInformation("Init areas");
+            AreaRegistration.RegisterAllAreas();
         }
+
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            System.Diagnostics.Trace.TraceError(e.ExceptionObject.ToString());
+        }
+
     }
 }
