@@ -187,8 +187,6 @@
                             $(this).addClass('fc-active');
                             activeDay = $.fullCalendar.formatDate(date, 'yyyy-MM-dd');
 
-                            // Affichage des tasks
-
                             appendRdvEvent(activeDay);
 
                         },
@@ -252,6 +250,11 @@
                 autoOpen: false,
                 dialogClass: 'no-close'
             });
+
+            function appendRdvEvent(activeDay) {
+
+                $('#modalCra').modal('show');
+            }
 
         });
     </script>
