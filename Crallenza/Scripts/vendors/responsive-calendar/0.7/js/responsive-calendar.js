@@ -72,12 +72,14 @@
       initialDraw: function() {
         return this.drawDays(this.currentYear, this.currentMonth);
       },
-      editDays: function(events) {
+      editDays: function (events) {
+          console.log(events);
         var dateString, day, dayEvents, time, _results;
         _results = [];
         for (dateString in events) {
           dayEvents = events[dateString];
           this.options.events[dateString] = events[dateString];
+          console.log(dateString);
           time = this.splitDateString(dateString);
           day = this.$element.find('[data-year="' + time.year + '"][data-month="' + (time.month + 1) + '"][data-day="' + time.day + '"]').parent('.day');
           day.removeClass('active');

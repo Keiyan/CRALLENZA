@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StaffingWebService</RootNamespace>
-    <AssemblyName>StaffingWebService</AssemblyName>
+    <RootNamespace>Cellenza.Service</RootNamespace>
+    <AssemblyName>Cellenza.Service</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <UseIISExpress>true</UseIISExpress>
@@ -100,6 +100,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\ConsultantBl.cs" />
+    <Compile Include="Business\CraBl.cs" />
     <Compile Include="ConnectionErrorException.cs" />
     <Compile Include="CRAPDFGenerator.cs" />
     <Compile Include="Data\ActiviteTable.cs">
@@ -142,7 +144,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StaffingModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Data\VacanceTable.cs" />
+    <Compile Include="Data\VacanceTable.cs">
+      <DependentUpon>StaffingModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="IStaffingWS.cs" />
     <Compile Include="JsonWebToken.cs" />
     <Compile Include="LiveEmails.cs" />

@@ -6,10 +6,10 @@ using System.ServiceModel.Activation;
 using System.Threading.Tasks;
 using System.Web;
 using Newtonsoft.Json;
-using StaffingWebService.Data;
-using StaffingWebService.Model;
+using Cellenza.Service.Data;
+using Cellenza.Service.Model;
 
-namespace StaffingWebService
+namespace Cellenza.Service
 {
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Required)]
     public class StaffingWS : IStaffingWS
@@ -148,7 +148,7 @@ namespace StaffingWebService
                 throw new NotConnectedException();
             }
 
-            return ActivityDAL.GetCRA(consultantId, year, month);
+            return ActivityDAL.GetCra(consultantId, year, month);
         }
 
         public IEnumerable<ActivityWeek> GetActivities(int craId, string token)
@@ -178,7 +178,7 @@ namespace StaffingWebService
                 throw new NotConnectedException();
             }
 
-            return ActivityDAL.CreateCRA(consultantId, year, month);
+            return ActivityDAL.CreateCra(consultantId, year, month);
         }
 
         public Holiday AddHoliday(Holiday holiday, string token)

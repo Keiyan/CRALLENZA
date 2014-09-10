@@ -7,26 +7,10 @@
     <div class="container">
         <input id="btnAddCra" type="button" class="btn btn-turquoise" value="Saisir CRA" />
         <br /><br />
-        <!-- Responsive calendar - START -->
-        <div id="calendar" class="responsive-calendar">
-            <div class="controls">
-                <a class="pull-left" data-go="prev"><div class="btn btn-primary">Prev</div></a>
-                <h4><span data-head-year></span> <span data-head-month></span></h4>
-                <a class="pull-right" data-go="next"><div class="btn btn-primary">Next</div></a>
-            </div><hr />
-            <div class="day-headers">
-                <div class="day header">Lun</div>
-                <div class="day header">Mar</div>
-                <div class="day header">Mer</div>
-                <div class="day header">Jeu</div>
-                <div class="day header">Ven</div>
-                <div class="day header">Sam</div>
-                <div class="day header">Dim</div>
-            </div>
-            <div class="days" data-group="days">
-
-            </div>
+        <div class="includeCalendar">
+            <div id="calendar"></div>
         </div>
+
         <!-- Responsive calendar - END -->
     </div>
 
@@ -64,50 +48,140 @@
 </div>
 
 @section Scripts {
-    <script src="../Scripts/vendors/responsive-calendar/0.7/js/responsive-calendar.js"></script>
+    <script src="~/Scripts/vendors/FullCalendar/fullcalendar.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $(".responsive-calendar").responsiveCalendar({
-                time: '2014-09',
-                translateMonths: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-                  'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
 
-                events: {
-                    "2014-09-30": { "number": 5, "url": "http://w3widgets.com/responsive-slider" },
-                    "2014-09-26": { "number": 1, "url": "http://w3widgets.com" },
-                    "2014-10-03": { "number": 1 },
-                    "2014-09-12": {}
-                }
-            });
+        $(document).ready(function () {
+            var $calendar = $('#calendar');
+            var activeDay = $calendar.find('.fc-today').attr('data-date');
+
+            var localeCalendar = {
+                buttonText: {
+                    today: 'Aujourd\'hui',
+                    month: 'Mois',
+                    week: 'Semaine',
+                    day: 'Jour'
+                },
+                monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+                    'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+                monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin',
+                    'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
+                dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+                dayNamesShort: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                firstDay: 1,
+                timeFormat: 'HH:mm{ - HH:mm}',
+                columnFormat: {
+                    month: 'ddd',
+                    week: 'ddd d/MM',
+                    day: 'dddd d/MM'
+                },
+                titleFormat: {
+                    month: 'MMMM yyyy',
+                    week: "d [ MMM] [ yyyy]{ '&#8212;' d MMM yyyy}",
+                    day: 'dd MMMM yyyy'
+                },
+                axisFormat: 'HH:mm',
+                allDayText: 'Journée'
+            };
+
+            InitCalendar();
 
 
             $("body").on("click", "#btnAddCra", function () {
                 $('#modalCra').modal('show');
             });
 
+
+
             $('#dateBegin').datepicker();
             $('#dateEnd').datepicker();
 
             // click sur le ok validation CRA
             $("body").on("click", "#submitCra", function () {
-                var dateBegin = $('#dateBegin').val();
-                var dateEnd = $('#dateEnd').val();
-                
-                var dateBeginFormated = dateBegin.substring(6, 10) + '-' + dateBegin.substring(0, 2) + '-' + dateBegin.substring(3, 5);
-                var dateEndFormated = dateEnd.substring(6, 10) + '-' + dateEnd.substring(0, 2) + '-' + dateEnd.substring(3, 5);
+                var dateBegin =  $('#dateBegin').val();
+                var dateEnd =  $('#dateEnd').val();
 
-                console.log(dateEndFormated);
-                console.log(dateBeginFormated);
-                var data = '{"' + dateEndFormated + '":{"badgeClass":"badge-warning"}}';
-                //data =
-                //    '{"' + dateBeginFormated + '":{number": 5, "badgeClass": "badge-warning", "url": "http://w3widgets.com/responsive-calendar"}}';
-                    
-                
+                var dateb =  dateBegin.substring(6, 10) + '-' + dateBegin.substring(0, 2) + '-' + dateBegin.substring(3, 5);
+               
 
+                var datef = dateBegin.substring(6, 10) + '-' + dateBegin.substring(0, 2) + '-' + dateBegin.substring(3, 5);
+               
 
-                $('#calendar').responsiveCalendar('edit', data);
+                dateb = new Date(dateBegin.substring(6, 10), eval(dateBegin.substring(0, 2)) - 1, dateBegin.substring(3, 5));
+                datef = new Date(dateEnd.substring(6, 10), eval(dateEnd.substring(0, 2)) - 1, dateEnd.substring(3, 5));
 
+                console.log(dateb);
+                // ajout de l'event sur le calendar
+                $calendar.fullCalendar('renderEvent',
+                 {
+                     id: 1,
+                     title: 'yes',
+                     start: dateb,
+                     end: datef,
+                     allDay: true
+                 },
+                 true // make the event "stick"
+             );
+
+               // $('#calendar').fullCalendar('updateEvent');
+
+                $('#modalCra').modal('hide');
             });
+
+
+
+            function InitCalendar() {
+                // Init calendar
+
+                var calendar = $calendar.fullCalendar(
+                    $.extend({
+                        header: {
+                            left: '<',
+                            center: '',
+                            right: '>'
+                        },
+                        theme: true,
+                        weekMode: 'liquid',
+                        allDaySlot: false,
+                        lazyFetching: true,
+                        dayClick: function (date, allDay, jsEvent, view) {
+                            $calendar.find('.fc-active').removeClass('fc-active');
+                            $(this).addClass('fc-active');
+                            activeDay = $.fullCalendar.formatDate(date, 'yyyy-MM-dd');
+
+                            // Affichage des tasks
+
+                            appendRdvEvent(activeDay);
+           
+                        },
+                        viewRender: function (view, element) {
+                            var start = view.start.getTime() / 1000;
+                            var end = view.end.getTime() / 1000;
+                            // today
+                            $('.fc-day[data-date="' + activeDay + '"]').addClass('fc-active');
+                            //$rdvLinesContainer.append('Aucun rendez-vous aujourd\'hui.');
+                        }
+                    }, localeCalendar)
+                );
+
+                //$calendar.find('.fc-today').trigger('click');
+                //displayMonth(calendar);
+                //$calendar.find('.fc-header').remove();
+
+                //$('#sidebarTitle').on('click', '#prevMonth', function (e) {
+                //    e.preventDefault();
+                //    calendar.fullCalendar('prev');
+                //    displayMonth(calendar);
+                //    renderVisits();
+                //});
+                //$('#sidebarTitle').on('click', '#nextMonth', function (e) {
+                //    e.preventDefault();
+                //    calendar.fullCalendar('next');
+                //    displayMonth(calendar);
+                //    renderVisits();
+                //});
+            }
+
 
         });
     </script>

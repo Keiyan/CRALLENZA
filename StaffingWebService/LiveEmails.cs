@@ -1,4 +1,4 @@
-﻿namespace StaffingWebService
+﻿namespace Cellenza.Service
 {
     public class LiveEmails
     {
