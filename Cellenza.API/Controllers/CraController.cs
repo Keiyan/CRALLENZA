@@ -11,7 +11,7 @@ namespace Cellenza.API.Areas.CRAApi
     {
         public IList<string> Get(int? year = null, int? month = null, string user = null)
         {
-            return new List<string>(new string[] { "toto", "tata" });
+            return new List<string>(new string[] { string.Format("{0}", year), string.Format("{0}", month), string.Format("{0}", user) });
         }
 
         [HttpPost]

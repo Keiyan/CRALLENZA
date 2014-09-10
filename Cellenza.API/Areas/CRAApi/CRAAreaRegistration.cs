@@ -16,6 +16,12 @@ namespace Cellenza.API.Areas.CRAApi
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
+            //context.MapRoute(
+            //    name: "cra_test",
+            //    url: "cra",
+            //    defaults: new { controller = "cra", action = "get", year = 2010, month = 12, user = "me" }
+            //    );
+
             context.MapRoute(
                 name: "api_cra",
                 url: "cra/{year}/{month}/{user}",
