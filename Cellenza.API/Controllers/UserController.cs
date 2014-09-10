@@ -9,5 +9,9 @@ namespace Crallenza.Areas.api.Controllers
 {
     public class UserController : ApiController
     {
+        public bool Get()
+        {
+            return true;
+        }
     }
 }

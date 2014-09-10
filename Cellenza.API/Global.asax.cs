@@ -1,4 +1,5 @@
-﻿using System;
+using Cellenza.API.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,7 +16,12 @@ namespace Cellenza.API
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
             System.Diagnostics.Trace.TraceInformation("Init areas");
-            AreaRegistration.RegisterAllAreas();
+            //AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+
+
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
