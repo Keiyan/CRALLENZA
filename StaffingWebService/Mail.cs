@@ -5,8 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using SendGridMail;
-using SendGridMail.Transport;
+using SendGrid;
 using StaffingWebService.Data;
 using StaffingWebService.Model;
 using System.Runtime.InteropServices;
@@ -43,25 +42,25 @@ namespace StaffingWebService
 
         public static void Send(int? consultantId, MailType type, object item)
         {
-            // Create the email object first, then add the properties.
-            var newMessage = SendGrid.GetInstance();
+            //// Create the email object first, then add the properties.
+            //var newMessage = SendGrid.GetInstance();
 
-            var sender = CreateSender();
-            IEnumerable<string> recipients;
-            IEnumerable<string> recipientsCc;
-            CreateRecipients(type, consultantId, out recipients, out recipientsCc);
-            var mailObject = CreateObject(type);
-            var body = CreateBody(type, consultantId, item);
+            //var sender = CreateSender();
+            //IEnumerable<string> recipients;
+            //IEnumerable<string> recipientsCc;
+            //CreateRecipients(type, consultantId, out recipients, out recipientsCc);
+            //var mailObject = CreateObject(type);
+            //var body = CreateBody(type, consultantId, item);
 
-            string attachement = null;
-            if (type == MailType.CRASubmited)
-                attachement = GetCRAPdfPath(consultantId, (CompteRenduActivite)item);
+            //string attachement = null;
+            //if (type == MailType.CRASubmited)
+            //    attachement = GetCRAPdfPath(consultantId, (CompteRenduActivite)item);
 
-            CreateMail(sender, recipients, recipientsCc, mailObject, body, newMessage, attachement);
-            var transportSMTP = CreateCredentials();
+            //CreateMail(sender, recipients, recipientsCc, mailObject, body, newMessage, attachement);
+            ////var transportSMTP = CreateCredentials();
 
-            // Send the email.
-            transportSMTP.Deliver(newMessage);
+            ////// Send the email.
+            ////transportSMTP.Deliver(newMessage);
         }
 
         private static string CreateObject(MailType type)
@@ -155,18 +154,18 @@ namespace StaffingWebService
             return sender;
         }
 
-        private static SMTP CreateCredentials()
-        {
-            // Create network credentials to access your SendGrid account.
-            var username = ConfigurationManager.AppSettings["SMTPUsername"];
-            var pswd = ConfigurationManager.AppSettings["SMTPPwd"];
+        //private static SMTP CreateCredentials()
+        //{
+        //    // Create network credentials to access your SendGrid account.
+        //    var username = ConfigurationManager.AppSettings["SMTPUsername"];
+        //    var pswd = ConfigurationManager.AppSettings["SMTPPwd"];
 
-            var credentials = new NetworkCredential(username, pswd);
+        //    var credentials = new NetworkCredential(username, pswd);
 
-            // Create an SMTP transport for sending email.
-            var transportSMTP = SMTP.GetInstance(credentials);
-            return transportSMTP;
-        }
+        //    // Create an SMTP transport for sending email.
+        //    var transportSMTP =  SMTP.GetInstance(credentials);
+        //    return transportSMTP;
+        //}
 
         private static void CreateMail(MailAddress sender, IEnumerable<string> recipients,
                                        IEnumerable<string> recipientsCc, string mailObject,
@@ -181,7 +180,7 @@ namespace StaffingWebService
 
             foreach (var recipient in recipientsCc)
             {
-                newMessage.AddCc(recipient);
+                newMessage.AddTo(recipient);
             }
 
             // Add a message body in HTML format.

@@ -9,5 +9,9 @@ namespace Crallenza.Areas.api.Controllers
 {
     public class CraController : ApiController
     {
+        public IList<string> Get(int year, int month, string user)
+        {
+            return new List<string>(new string[] { "toto", "tata" });
+        }
     }
 }
