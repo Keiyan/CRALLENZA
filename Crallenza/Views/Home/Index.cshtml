@@ -6,13 +6,12 @@
     <br /><br />
     <div class="container">
         <input id="btnAddCra" type="button" class="btn btn-turquoise" value="Saisir CRA" />
+        <input id="btnGenerateCra" type="button" class="btn btn-turquoise" value="Générer CRA" />
         <br /><br />
-       
+
         <div class="includeCalendar">
             <div id="calendar"></div>
         </div>
-
-        <!-- Responsive calendar - END -->
     </div>
 
 </div>
@@ -25,20 +24,33 @@
                 <label class="popupTitle">Crallenza</label>
             </div>
             <div class="modal-body">
-                <table>
-                    <tr>
-                        <td>Activité :</td>
-                        <td><input id="activity" type="text" class="form-control" /> </td>
-                    </tr>
-                    <tr>
-                        <td>Date Début :</td>
-                        <td><input id="dateBegin" type="text" class="form-control" /> </td>
-                    </tr>
-                    <tr>
-                        <td>Date Fin :</td>
-                        <td><input id="dateEnd" type="text" class="form-control" /> </td>
-                    </tr>
-                </table>
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-sm-10">
+                            Georges DAMIEN
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Activité</label>
+                        <div class="col-sm-10">
+                            <input id="activity" type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Date de Début</label>
+                        <div class="col-sm-10">
+                            <input id="dateBegin" type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Date de Fin</label>
+                        <div class="col-sm-10">
+                            <input id="dateEnd" type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-grey" data-dismiss="modal">Annuler</button>
@@ -68,6 +80,10 @@
             </div>
         </div>
     </div>
+</div>
+
+<div id="loading">
+
 </div>
 
 @section Scripts {
@@ -109,12 +125,9 @@
 
             InitCalendar();
 
-
             $("body").on("click", "#btnAddCra", function () {
                 $('#modalCra').modal('show');
             });
-
-
 
             $('#dateBegin').datepicker();
             $('#dateEnd').datepicker();
@@ -124,13 +137,8 @@
                 var dateBegin = $('#dateBegin').val();
                 var dateEnd = $('#dateEnd').val();
                 var activity = $('#activity').val();
-
                 var dateb = dateBegin.substring(6, 10) + '-' + dateBegin.substring(0, 2) + '-' + dateBegin.substring(3, 5);
-
-
                 var datef = dateBegin.substring(6, 10) + '-' + dateBegin.substring(0, 2) + '-' + dateBegin.substring(3, 5);
-
-
                 dateb = new Date(dateBegin.substring(6, 10), eval(dateBegin.substring(0, 2)) - 1, dateBegin.substring(3, 5));
                 datef = new Date(dateEnd.substring(6, 10), eval(dateEnd.substring(0, 2)) - 1, dateEnd.substring(3, 5));
 
@@ -146,13 +154,9 @@
                  },
                  true // make the event "stick"
              );
-
                 // $('#calendar').fullCalendar('updateEvent');
-
                 $('#modalCra').modal('hide');
             });
-
-
 
             function InitCalendar() {
                 // Init calendar
@@ -197,29 +201,58 @@
                         }
                     }, localeCalendar)
                 );
-
                 //$calendar.find('.fc-today').trigger('click');
-
                 //$calendar.find('.fc-header').remove();
-
             }
 
-          
+            $("body").on("click", "#btnGenerateCra", function () {
+                GenerateCRA();
+            });
+
+            function GenerateCRA() {
+                jQuery.support.cors = true;
+                $.ajax({
+                    url: 'http://localhost:4631/CRA/2014/08/pamphile',
+                    type: 'GET',
+                    dataType: 'json',
+                    beforeSend: function () {
+                        $("#loading").dialog('open').html("<p>Veuillez patientez...</p>");
+                    },
+                    success: function (data) {
+                        WriteResponse(data);
+                        $("#loading").dialog('close');
+                    },
+                    error: function (x, y, z) {
+                        alert(x + '\n' + y + '\n' + z);
+                        $("#loading").dialog('close');
+                    }
+                });
+            }
+
+
             var konami_keys = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
             var konami_index = 0;
-            $(document).keydown(function(e){
-                if(e.keyCode === konami_keys[konami_index++]){
-                    if(konami_index === konami_keys.length){
+            $(document).keydown(function (e) {
+                if (e.keyCode === konami_keys[konami_index++]) {
+                    if (konami_index === konami_keys.length) {
                         $(document).unbind('keydown', arguments.callee);
-                        $.getScript('http://www.cornify.com/js/cornify.js',function(){
+                        $.getScript('http://www.cornify.com/js/cornify.js', function () {
                             cornify_add();
                             $(document).keydown(cornify_add);
-                        }); 
+                        });
                     }
-                }else{
+                } else {
                     konami_index = 0;
                 }
             });
+
+            $("#loading").dialog({
+                hide: 'slide',
+                show: 'slide',
+                autoOpen: false,
+                dialogClass: 'no-close'
+            });
+
         });
     </script>
 }
