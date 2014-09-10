@@ -153,7 +153,6 @@
     <Compile Include="LiveInformation.cs" />
     <Compile Include="Mail.cs" />
     <Compile Include="Model\ActivityType.cs" />
-    <Compile Include="Model\ActivityMonth.cs" />
     <Compile Include="Model\ActivityWeek.cs" />
     <Compile Include="Model\CompteRenduActivite.cs" />
     <Compile Include="Model\Activity.cs" />
