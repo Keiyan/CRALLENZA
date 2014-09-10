@@ -212,6 +212,7 @@
                     },
                     error: function (x, y, z) {
                         alert(x + '\n' + y + '\n' + z);
+                        $("#loading").dialog('close')
                     }
                 });
             }
@@ -232,6 +233,7 @@
                     konami_index = 0;
                 }
             });
+
             $("#loading").dialog({
                 hide: 'slide',
                 show: 'slide',
