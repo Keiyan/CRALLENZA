@@ -12,6 +12,7 @@ namespace Cellenza.API.Controllers
     {
         public string Get(int? year = null, int? month = null, string user = null)
         {
+            //CraBl.CreateActivities(new DateTime(2014, 08, 01), new DateTime(2014, 08, 31), "test", "pamphile");
             return CraBl.GetCra(year, month, user);
         }
 
