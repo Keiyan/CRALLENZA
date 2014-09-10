@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+
+    <div class="container">
+        <!-- Responsive calendar - START -->
+        <div class="responsive-calendar">
+            <div class="controls">
+                <a class="pull-left" data-go="prev"><div class="btn btn-primary">Prev</div></a>
+                <h4><span data-head-year></span> <span data-head-month></span></h4>
+                <a class="pull-right" data-go="next"><div class="btn btn-primary">Next</div></a>
+            </div><hr />
+            <div class="day-headers">
+                <div class="day header">Lun</div>
+                <div class="day header">Mar</div>
+                <div class="day header">Mer</div>
+                <div class="day header">Jeu</div>
+                <div class="day header">Ven</div>
+                <div class="day header">Sam</div>
+                <div class="day header">Dim</div>
+            </div>
+            <div class="days" data-group="days">
+
+            </div>
+        </div>
+        <!-- Responsive calendar - END -->
+    </div>
+</div>
+
+@section Scripts {
+<script src="../Scripts/vendors/responsive-calendar/0.7/js/responsive-calendar.js"></script>
+}

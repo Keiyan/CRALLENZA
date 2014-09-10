@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Front.Crallenza", "Crallenza\Front.Crallenza.csproj", "{84D1CB08-F300-4B8C-9E40-FB39EBAC3C26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crallenza.Tests", "Crallenza.Tests\Crallenza.Tests.csproj", "{EC3D1A60-3FF5-4C6B-A56C-9ADC9E6B3017}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84D1CB08-F300-4B8C-9E40-FB39EBAC3C26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84D1CB08-F300-4B8C-9E40-FB39EBAC3C26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84D1CB08-F300-4B8C-9E40-FB39EBAC3C26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84D1CB08-F300-4B8C-9E40-FB39EBAC3C26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC3D1A60-3FF5-4C6B-A56C-9ADC9E6B3017}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC3D1A60-3FF5-4C6B-A56C-9ADC9E6B3017}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC3D1A60-3FF5-4C6B-A56C-9ADC9E6B3017}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC3D1A60-3FF5-4C6B-A56C-9ADC9E6B3017}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
