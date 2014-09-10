@@ -10,7 +10,7 @@ namespace Cellenza.API.Areas.CRAApi
 {
     public class CraController : ApiController
     {
-        public IList<string> Get(int? year = null, int? month = null, string user = null)
+        public string Get(int? year = null, int? month = null, string user = null)
         {
             return CraBl.GetCra(year, month, user);
         }
