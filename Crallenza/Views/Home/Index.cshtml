@@ -7,6 +7,7 @@
     <div class="container">
         <input id="btnAddCra" type="button" class="btn btn-turquoise" value="Saisir CRA" />
         <br /><br />
+       
         <div class="includeCalendar">
             <div id="calendar"></div>
         </div>
@@ -27,7 +28,7 @@
                 <table>
                     <tr>
                         <td>Activité :</td>
-                        <td><input type="text" class="form-control" /> </td>
+                        <td><input id="activity" type="text" class="form-control" /> </td>
                     </tr>
                     <tr>
                         <td>Date Début :</td>
@@ -120,14 +121,15 @@
 
             // click sur le ok validation CRA
             $("body").on("click", "#submitCra", function () {
-                var dateBegin =  $('#dateBegin').val();
-                var dateEnd =  $('#dateEnd').val();
+                var dateBegin = $('#dateBegin').val();
+                var dateEnd = $('#dateEnd').val();
+                var activity = $('#activity').val();
 
-                var dateb =  dateBegin.substring(6, 10) + '-' + dateBegin.substring(0, 2) + '-' + dateBegin.substring(3, 5);
-               
+                var dateb = dateBegin.substring(6, 10) + '-' + dateBegin.substring(0, 2) + '-' + dateBegin.substring(3, 5);
+
 
                 var datef = dateBegin.substring(6, 10) + '-' + dateBegin.substring(0, 2) + '-' + dateBegin.substring(3, 5);
-               
+
 
                 dateb = new Date(dateBegin.substring(6, 10), eval(dateBegin.substring(0, 2)) - 1, dateBegin.substring(3, 5));
                 datef = new Date(dateEnd.substring(6, 10), eval(dateEnd.substring(0, 2)) - 1, dateEnd.substring(3, 5));
@@ -137,7 +139,7 @@
                 $calendar.fullCalendar('renderEvent',
                  {
                      id: 1,
-                     title: 'yes',
+                     title: activity,
                      start: dateb,
                      end: datef,
                      allDay: true
@@ -145,7 +147,7 @@
                  true // make the event "stick"
              );
 
-               // $('#calendar').fullCalendar('updateEvent');
+                // $('#calendar').fullCalendar('updateEvent');
 
                 $('#modalCra').modal('hide');
             });
@@ -158,9 +160,15 @@
                 var calendar = $calendar.fullCalendar(
                     $.extend({
                         header: {
-                            left: '<',
-                            center: '',
-                            right: '>'
+                            left: 'prev,next',
+                            center: 'title',
+                            right: 'month,basicWeek'
+                        },
+                        buttonText: {
+                            today: 'Aujourd\'hui',
+                            month: 'Mois',
+                            week: 'Semaine',
+                            day: 'Jour'
                         },
                         theme: true,
                         weekMode: 'liquid',
@@ -174,7 +182,7 @@
                             // Affichage des tasks
 
                             appendRdvEvent(activeDay);
-           
+
                         },
                         viewRender: function (view, element) {
                             var start = view.start.getTime() / 1000;
@@ -194,23 +202,12 @@
                 });
 
                 //$calendar.find('.fc-today').trigger('click');
-                //displayMonth(calendar);
+
                 //$calendar.find('.fc-header').remove();
 
-                //$('#sidebarTitle').on('click', '#prevMonth', function (e) {
-                //    e.preventDefault();
-                //    calendar.fullCalendar('prev');
-                //    displayMonth(calendar);
-                //    renderVisits();
-                //});
-                //$('#sidebarTitle').on('click', '#nextMonth', function (e) {
-                //    e.preventDefault();
-                //    calendar.fullCalendar('next');
-                //    displayMonth(calendar);
-                //    renderVisits();
-                //});
             }
 
+          
 
         });
     </script>

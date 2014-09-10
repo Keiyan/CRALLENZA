@@ -148,7 +148,7 @@ namespace Cellenza.Service
                 throw new NotConnectedException();
             }
 
-            return ActivityDAL.GetCra(consultantId, year, month);
+            return ActivityDal.GetCra(consultantId, year, month);
         }
 
         public IEnumerable<ActivityWeek> GetActivities(int craId, string token)
@@ -158,7 +158,7 @@ namespace Cellenza.Service
                 throw new NotConnectedException();
             }
 
-            return ActivityDAL.GetActivities(craId);
+            return ActivityDal.GetActivities(craId);
         }
 
         public void UpdateActivities(List<ActivityDay> weeks, string token)
@@ -168,7 +168,7 @@ namespace Cellenza.Service
                 throw new NotConnectedException();
             }
 
-            ActivityDAL.UpdateActivities(weeks);
+            ActivityDal.UpdateActivities(weeks);
         }
 
         public CompteRenduActivite CreateCRA(int consultantId, int year, int month, string token)
@@ -178,7 +178,7 @@ namespace Cellenza.Service
                 throw new NotConnectedException();
             }
 
-            return ActivityDAL.CreateCra(consultantId, year, month);
+            return ActivityDal.CreateCra(consultantId, year, month);
         }
 
         public Holiday AddHoliday(Holiday holiday, string token)
@@ -265,7 +265,7 @@ namespace Cellenza.Service
                 throw new NotConnectedException();
             }
             CRAPDFGenerator.GeneratePDF(compteRenduActivite);
-            var cra = ActivityDAL.UpdateCRA(compteRenduActivite);
+            var cra = ActivityDal.UpdateCra(compteRenduActivite);
 
 
             return cra;

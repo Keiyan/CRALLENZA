@@ -26,11 +26,6 @@ namespace Cellenza.API.App_Start
                 name: "DefaultApi",
                 routeTemplate: "cra/{year}/{month}/{user}",
                 defaults: new { controller = "cra", action = "get", year = UrlParameter.Optional, month = UrlParameter.Optional, user = UrlParameter.Optional }
-                //constraints: new
-                //{
-                //    year = new CompoundRouteConstraint(new IRouteConstraint[] { new IntRouteConstraint(), new MinRouteConstraint(0) }),
-                //    month = new CompoundRouteConstraint(new IRouteConstraint[] { new IntRouteConstraint(), new RangeRouteConstraint(1, 12) })
-                //}
             );
         }
     }

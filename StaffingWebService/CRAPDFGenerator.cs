@@ -16,7 +16,7 @@ namespace Cellenza.Service
     {
         public static void GeneratePDF(CompteRenduActivite cra)
         {
-            var activities = ActivityDAL.GetActivities(cra.Id);
+            var activities = ActivityDal.GetActivities(cra.Id);
 
             var days = new List<List<string>>();
             for (var i = 0; i < 6; i++)

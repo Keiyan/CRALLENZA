@@ -26,5 +26,12 @@ namespace Crallenza.Controllers
 
             return View();
         }
+
+        public ActionResult Gestion()
+        {
+            ViewBag.Message = "Gestion";
+
+            return View();
+        }
     }
 }
