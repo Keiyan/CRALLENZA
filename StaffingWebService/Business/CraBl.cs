@@ -14,5 +14,8 @@ namespace Cellenza.Service.Business
         }
 
         public static string CreateActivities()
+        {
+            return string.Empty;
+        }
     }
 }
