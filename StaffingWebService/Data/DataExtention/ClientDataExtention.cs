@@ -1,6 +1,6 @@
-﻿using StaffingWebService.Model;
+﻿using Cellenza.Service.Model;
 
-namespace StaffingWebService.Data.DataExtention
+namespace Cellenza.Service.Data.DataExtention
 {
     internal static class ClientDataExtention
     {

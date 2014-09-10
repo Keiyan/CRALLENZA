@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace StaffingWebService.Model
+namespace Cellenza.Service.Model
 {
     public class ActivityWeek
     {

@@ -4,13 +4,13 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
-using StaffingWebService.Data;
-using StaffingWebService.Data.DataExtention;
-using StaffingWebService.Model;
+using Cellenza.Service.Data;
+using Cellenza.Service.Data.DataExtention;
+using Cellenza.Service.Model;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
-namespace StaffingWebService
+namespace Cellenza.Service
 {
     public class CRAPDFGenerator : PDFGenerator
     {

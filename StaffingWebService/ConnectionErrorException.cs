@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace StaffingWebService
+namespace Cellenza.Service
 {
     class ConnectionErrorException : Exception
     {

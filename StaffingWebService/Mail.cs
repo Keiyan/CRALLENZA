@@ -6,12 +6,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using SendGrid;
-using StaffingWebService.Data;
-using StaffingWebService.Model;
+using Cellenza.Service.Data;
+using Cellenza.Service.Model;
 using System.Runtime.InteropServices;
 using System.Web;
 
-namespace StaffingWebService
+namespace Cellenza.Service
 {
     public class Mail
     {

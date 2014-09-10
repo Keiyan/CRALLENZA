@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using StaffingWebService.Data.DataExtention;
-using StaffingWebService.Model;
+using Cellenza.Service.Data.DataExtention;
+using Cellenza.Service.Model;
 using System.Collections.Generic;
 
-namespace StaffingWebService.Data
+namespace Cellenza.Service.Data
 {
     internal class ConsultantDAL
     {
@@ -66,6 +66,15 @@ namespace StaffingWebService.Data
             using (var entity = new StaffingModelContainer())
             {
                 var elt = entity.ConsultantTable.Single(o => o.LiveEmail == liveEmail && o.Actif);
+                return elt.CreateApplicationConsultant();
+            }
+        }
+
+        public static Consultant GetConsultantByName(string name)
+        {
+            using (var entity = new StaffingModelContainer())
+            {
+                var elt = entity.ConsultantTable.Single(o => o.Nom == name && o.Actif);
                 return elt.CreateApplicationConsultant();
             }
         }

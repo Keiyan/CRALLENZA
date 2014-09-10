@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace StaffingWebService.Model
+namespace Cellenza.Service.Model
 {
     public class CompteRenduActivite
     {
@@ -9,5 +9,6 @@ namespace StaffingWebService.Model
         public int Month { get; set; }
         public int ConsultantId { get; set; }
         public ItemStatus Status { get; set; }
+        public List<ActivityWeek> ActivityWeeks { get; set; }
     }
 }
