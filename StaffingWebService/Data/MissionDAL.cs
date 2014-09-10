@@ -5,9 +5,9 @@ using Cellenza.Service.Model;
 
 namespace Cellenza.Service.Data
 {
-    internal class MissionDAL
+    public class MissionDAL
     {
-        internal static IEnumerable<Mission> GetMissions()
+        public static IEnumerable<Mission> GetMissions()
         {
             IEnumerable<Mission> missions;
             using (var entity = new StaffingModelContainer())
@@ -19,7 +19,7 @@ namespace Cellenza.Service.Data
             return missions;
         }
 
-        internal static IEnumerable<Mission> AddMission(Mission newMission)
+        public static IEnumerable<Mission> AddMission(Mission newMission)
         {
             using (var entity = new StaffingModelContainer())
             {

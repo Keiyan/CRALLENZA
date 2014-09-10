@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace Cellenza.Service.Data
 {
-    internal class ConsultantDAL
+    public class ConsultantDAL
     {
-        internal static IEnumerable<Consultant> GetConsultants()
+        public static IEnumerable<Consultant> GetConsultants()
         {
             IEnumerable<Consultant> consultants;
             using (var entity = new StaffingModelContainer())
@@ -19,7 +19,7 @@ namespace Cellenza.Service.Data
             return consultants;
         }
 
-        internal static IEnumerable<Consultant> AddConsultant(Consultant newConsultant)
+        public static IEnumerable<Consultant> AddConsultant(Consultant newConsultant)
         {
             using (var entity = new StaffingModelContainer())
             {
