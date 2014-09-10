@@ -174,10 +174,10 @@ textarea {
 .violet {
     color: #612084;
 }
-         
+
 .bleu {
     color: #29bed6;
-     }
+}
 
 .gris {
     color: #d3d3d3;
@@ -185,10 +185,14 @@ textarea {
 
 .rose {
     color: #dd1578;
-    }
+}
 
 .badge {
     background-color: #dd1578;
-}
+    }
 
     .no-close .ui-dialog-titlebar-close {display: none }
+
+.margin5{
+    margin:5px;
+}

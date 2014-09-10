@@ -28,11 +28,11 @@ namespace Cellenza.API.App_Start
                 defaults: new { controller = "cra", action = "get", year = UrlParameter.Optional, month = UrlParameter.Optional, user = UrlParameter.Optional }
             );
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApiPost",
-                routeTemplate: "cra/{year}/{month}/{user}",
-                defaults: new { controller = "cra", action = "post" }
-            );
+            //config.Routes.MapHttpRoute(
+            //    name: "DefaultApi",
+            //    routeTemplate: "cra/{year}/{month}/{user}",
+            //    defaults: new { controller = "cra", action = "post" }
+            //);
         }
     }
 }

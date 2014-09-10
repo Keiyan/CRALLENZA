@@ -21,7 +21,9 @@ namespace Cellenza.Service.Data
 
                 if (item != null)
                 {
-                    return item.CreateCompteRenduActivite();
+                    var result = item.CreateCompteRenduActivite();
+                    result.ActivityWeeks = GetActivities(result.Id).ToList();
+                    return result;
                 }
 
 
