@@ -106,10 +106,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\CraController.cs" />
-    <Compile Include="Controllers\CustomerController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Areas\CRAApi\CRAAreaRegistration.cs" />
+    <Compile Include="Areas\CRAApi\Controllers\CraController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -117,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="Areas\CRAApi\Views\web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -126,6 +125,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="App_Start\" />
+    <Folder Include="Areas\CRAApi\Models\" />
+    <Folder Include="Areas\CRAApi\Views\Shared\" />
+    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
