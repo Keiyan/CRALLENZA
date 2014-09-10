@@ -1,4 +1,5 @@
-﻿using Cellenza.Service.Data;
+﻿using System;
+using Cellenza.Service.Data;
 using Newtonsoft.Json;
 
 namespace Cellenza.Service.Business
@@ -14,5 +15,8 @@ namespace Cellenza.Service.Business
         }
 
         public static string CreateActivities()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

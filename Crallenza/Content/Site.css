@@ -191,6 +191,8 @@ textarea {
     background-color: #dd1578;
     }
 
+    .no-close .ui-dialog-titlebar-close {display: none }
+
 .margin5{
     margin:5px;
 }
