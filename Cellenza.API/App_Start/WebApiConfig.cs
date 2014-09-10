@@ -29,7 +29,7 @@ namespace Cellenza.API.App_Start
             );
 
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
+                name: "DefaultApiPost",
                 routeTemplate: "cra/{year}/{month}/{user}",
                 defaults: new { controller = "cra", action = "post" }
             );
