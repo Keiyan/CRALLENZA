@@ -1,4 +1,5 @@
 using Cellenza.Service.Business;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Cellenza.API.Controllers
 {
     public class CraController : CellenzApiControllerBase
     {
+        [HttpGet]
         public string Get(int? year = null, int? month = null, string user = null)
         {
             return CraBl.GetCra(year, month, user);
@@ -23,11 +25,14 @@ namespace Cellenza.API.Controllers
         }
 
         [HttpPost]
-        public bool Save(int year
-            , int month
-            , int user
-            , PostData data)
+        public bool Save()
         {
+            Request.Content.ReadAsStringAsync().ContinueWith(s=>
+                {
+                    var data = JsonConvert.DeserializeObject<PostData>(s);
+                    CraBl.CreateActivities();
+                }
+                );
             return false;
         }
     }
