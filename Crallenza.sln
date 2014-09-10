@@ -1,11 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
+# Visual Studio Express 2013 for Web
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Front.Crallenza", "Crallenza\Front.Crallenza.csproj", "{84D1CB08-F300-4B8C-9E40-FB39EBAC3C26}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crallenza.Tests", "Crallenza.Tests\Crallenza.Tests.csproj", "{EC3D1A60-3FF5-4C6B-A56C-9ADC9E6B3017}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cellenza.API", "Cellenza.API\Cellenza.API.csproj", "{1CE6F829-EA54-4531-8359-C6692E929AA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cellenza.API.Tests", "Cellenza.API.Tests\Cellenza.API.Tests.csproj", "{8F7B4D6E-F182-40B9-9CB6-583D84746FBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaffingWebService", "StaffingWebService\StaffingWebService.csproj", "{67FE95D4-26A8-4984-AE37-C5B327C277EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cellenza.Models", "Cellenza.Models\Cellenza.Models.csproj", "{FDA0AD92-81AE-428E-8D84-D233136094D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +29,22 @@ Global
 		{EC3D1A60-3FF5-4C6B-A56C-9ADC9E6B3017}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC3D1A60-3FF5-4C6B-A56C-9ADC9E6B3017}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC3D1A60-3FF5-4C6B-A56C-9ADC9E6B3017}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CE6F829-EA54-4531-8359-C6692E929AA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CE6F829-EA54-4531-8359-C6692E929AA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CE6F829-EA54-4531-8359-C6692E929AA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CE6F829-EA54-4531-8359-C6692E929AA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F7B4D6E-F182-40B9-9CB6-583D84746FBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F7B4D6E-F182-40B9-9CB6-583D84746FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F7B4D6E-F182-40B9-9CB6-583D84746FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F7B4D6E-F182-40B9-9CB6-583D84746FBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67FE95D4-26A8-4984-AE37-C5B327C277EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67FE95D4-26A8-4984-AE37-C5B327C277EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67FE95D4-26A8-4984-AE37-C5B327C277EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67FE95D4-26A8-4984-AE37-C5B327C277EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDA0AD92-81AE-428E-8D84-D233136094D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDA0AD92-81AE-428E-8D84-D233136094D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDA0AD92-81AE-428E-8D84-D233136094D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDA0AD92-81AE-428E-8D84-D233136094D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

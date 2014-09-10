@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="StaffingModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="StaffingModelStoreContainer">
+          <EntitySet Name="ActiviteTable" EntityType="StaffingModel.Store.ActiviteTable" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientTable" EntityType="StaffingModel.Store.ClientTable" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CompteRenduActiviteTable" EntityType="StaffingModel.Store.CompteRenduActiviteTable" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ConsultantTable" EntityType="StaffingModel.Store.ConsultantTable" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MissionTable" EntityType="StaffingModel.Store.MissionTable" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VacanceTable" EntityType="StaffingModel.Store.VacanceTable" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ActiviteCompteRenduActivite" Association="StaffingModel.Store.FK_ActiviteCompteRenduActivite">
+            <End Role="CompteRenduActiviteTable" EntitySet="CompteRenduActiviteTable" />
+            <End Role="ActiviteTable" EntitySet="ActiviteTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityTableMissionTable" Association="StaffingModel.Store.FK_ActivityTableMissionTable">
+            <End Role="MissionTable" EntitySet="MissionTable" />
+            <End Role="ActiviteTable" EntitySet="ActiviteTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientTableMissionTable" Association="StaffingModel.Store.FK_ClientTableMissionTable">
+            <End Role="ClientTable" EntitySet="ClientTable" />
+            <End Role="MissionTable" EntitySet="MissionTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompteRenduActiviteConsultantTable" Association="StaffingModel.Store.FK_CompteRenduActiviteConsultantTable">
+            <End Role="ConsultantTable" EntitySet="ConsultantTable" />
+            <End Role="CompteRenduActiviteTable" EntitySet="CompteRenduActiviteTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsultantTableMissionTable" Association="StaffingModel.Store.FK_ConsultantTableMissionTable">
+            <End Role="ConsultantTable" EntitySet="ConsultantTable" />
+            <End Role="MissionTable" EntitySet="MissionTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VacanceTableConsultantTable" Association="StaffingModel.Store.FK_VacanceTableConsultantTable">
+            <End Role="ConsultantTable" EntitySet="ConsultantTable" />
+            <End Role="VacanceTable" EntitySet="VacanceTable" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ActiviteTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CompteRenduActiviteTableID" Type="int" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="Afternoon" Type="bit" Nullable="false" />
+          <Property Name="MissionTableID" Type="int" />
+          <Property Name="Day" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RaisonSociale" Type="nvarchar(max)" />
+          <Property Name="CodeClient" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Actif" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompteRenduActiviteTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ConsultantTableID" Type="int" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Month" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConsultantTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Prenom" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateNaissance" Type="datetime" />
+          <Property Name="NoSecu" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateArrivee" Type="datetime" />
+          <Property Name="DateDepart" Type="datetime" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Actif" Type="bit" Nullable="false" />
+          <Property Name="Admin" Type="bit" Nullable="false" />
+          <Property Name="Poste" Type="nvarchar(max)" />
+          <Property Name="AdresseRue" Type="nvarchar(max)" />
+          <Property Name="AdresseComplement" Type="nvarchar(max)" />
+          <Property Name="AdresseCodePostal" Type="nvarchar(max)" />
+          <Property Name="AdresseVille" Type="nvarchar(max)" />
+          <Property Name="LiveEmail" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MissionTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Intitule" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ConsultantTableID" Type="int" Nullable="false" />
+          <Property Name="DateDebut" Type="datetime" />
+          <Property Name="DateFin" Type="datetime" />
+          <Property Name="ReferenceFacturation" Type="nvarchar(max)" />
+          <Property Name="DateFacturation" Type="datetime" />
+          <Property Name="Facturation" Type="int" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Actif" Type="bit" Nullable="false" />
+          <Property Name="InterlocuteurNom" Type="nvarchar(max)" />
+          <Property Name="InterlocuteurTelephone" Type="nvarchar(max)" />
+          <Property Name="InterlocuteurEmail" Type="nvarchar(max)" />
+          <Property Name="ClientTableID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VacanceTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ConsultantTableID" Type="int" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="DateDebut" Type="datetime" Nullable="false" />
+          <Property Name="DateFin" Type="datetime" Nullable="false" />
+          <Property Name="Motif" Type="nvarchar(max)" />
+          <Property Name="Commentaire" Type="nvarchar(max)" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Actif" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ActiviteCompteRenduActivite">
+          <End Role="CompteRenduActiviteTable" Type="StaffingModel.Store.CompteRenduActiviteTable" Multiplicity="1" />
+          <End Role="ActiviteTable" Type="StaffingModel.Store.ActiviteTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompteRenduActiviteTable">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActiviteTable">
+              <PropertyRef Name="CompteRenduActiviteTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityTableMissionTable">
+          <End Role="MissionTable" Type="StaffingModel.Store.MissionTable" Multiplicity="0..1" />
+          <End Role="ActiviteTable" Type="StaffingModel.Store.ActiviteTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MissionTable">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActiviteTable">
+              <PropertyRef Name="MissionTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientTableMissionTable">
+          <End Role="ClientTable" Type="StaffingModel.Store.ClientTable" Multiplicity="1" />
+          <End Role="MissionTable" Type="StaffingModel.Store.MissionTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientTable">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MissionTable">
+              <PropertyRef Name="ClientTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompteRenduActiviteConsultantTable">
+          <End Role="ConsultantTable" Type="StaffingModel.Store.ConsultantTable" Multiplicity="1" />
+          <End Role="CompteRenduActiviteTable" Type="StaffingModel.Store.CompteRenduActiviteTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConsultantTable">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CompteRenduActiviteTable">
+              <PropertyRef Name="ConsultantTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsultantTableMissionTable">
+          <End Role="ConsultantTable" Type="StaffingModel.Store.ConsultantTable" Multiplicity="1" />
+          <End Role="MissionTable" Type="StaffingModel.Store.MissionTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConsultantTable">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MissionTable">
+              <PropertyRef Name="ConsultantTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VacanceTableConsultantTable">
+          <End Role="ConsultantTable" Type="StaffingModel.Store.ConsultantTable" Multiplicity="1" />
+          <End Role="VacanceTable" Type="StaffingModel.Store.VacanceTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConsultantTable">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VacanceTable">
+              <PropertyRef Name="ConsultantTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StaffingModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="StaffingModelContainer" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="ConsultantTable" EntityType="StaffingModel.ConsultantTable" />
+          <EntitySet Name="MissionTable" EntityType="StaffingModel.MissionTable" />
+          <AssociationSet Name="ConsultantTableMissionTable" Association="StaffingModel.ConsultantTableMissionTable">
+            <End Role="MissionTable" EntitySet="MissionTable" />
+            <End Role="ConsultantTable" EntitySet="ConsultantTable" />
+          </AssociationSet>
+          <EntitySet Name="ActiviteTable" EntityType="StaffingModel.ActiviteTable" />
+          <EntitySet Name="CompteRenduActiviteTable" EntityType="StaffingModel.CompteRenduActiviteTable" />
+          <AssociationSet Name="FK_ActiviteCompteRenduActivite" Association="StaffingModel.FK_ActiviteCompteRenduActivite">
+            <End Role="CompteRenduActiviteTable" EntitySet="CompteRenduActiviteTable" />
+            <End Role="ActiviteTable" EntitySet="ActiviteTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompteRenduActiviteConsultantTable" Association="StaffingModel.FK_CompteRenduActiviteConsultantTable">
+            <End Role="ConsultantTable" EntitySet="ConsultantTable" />
+            <End Role="CompteRenduActiviteTable" EntitySet="CompteRenduActiviteTable" />
+          </AssociationSet>
+          <AssociationSet Name="ActivityTableMissionTable" Association="StaffingModel.ActivityTableMissionTable">
+            <End Role="ActivityTable" EntitySet="ActiviteTable" />
+            <End Role="MissionTable" EntitySet="MissionTable" />
+          </AssociationSet>
+          <EntitySet Name="VacanceTable" EntityType="StaffingModel.VacanceTable" />
+          <AssociationSet Name="VacanceTableConsultantTable" Association="StaffingModel.VacanceTableConsultantTable">
+            <End Role="VacanceTable" EntitySet="VacanceTable" />
+            <End Role="ConsultantTable" EntitySet="ConsultantTable" />
+          </AssociationSet>
+          <EntitySet Name="ClientTable" EntityType="StaffingModel.ClientTable" />
+          <AssociationSet Name="ClientTableMissionTable" Association="StaffingModel.ClientTableMissionTable">
+            <End Role="ClientTable" EntitySet="ClientTable" />
+            <End Role="MissionTable" EntitySet="MissionTable" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ConsultantTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" Nullable="false" />
+          <Property Name="Prenom" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DateNaissance" Type="DateTime" Nullable="true" Precision="3" />
+          <Property Name="NoSecu" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" Nullable="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DateArrivee" Type="DateTime" Nullable="true" Precision="3" />
+          <Property Name="DateDepart" Type="DateTime" Nullable="true" Precision="3" />
+          <Property Type="String" Name="Image" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CompteRenduActiviteTable" Relationship="StaffingModel.FK_CompteRenduActiviteConsultantTable" FromRole="ConsultantTable" ToRole="CompteRenduActiviteTable" />
+          <Property Type="Boolean" Name="Actif" Nullable="false" DefaultValue="True" />
+          <Property Type="Boolean" Name="Admin" Nullable="false" DefaultValue="False" />
+          <Property Type="String" Name="Poste" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="VacanceTable" Relationship="StaffingModel.VacanceTableConsultantTable" FromRole="ConsultantTable" ToRole="VacanceTable" />
+          <Property Type="String" Name="AdresseRue" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="AdresseComplement" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="AdresseCodePostal" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="AdresseVille" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="LiveEmail" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MissionTable" >
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Intitule" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="ConsultantTableID" Nullable="false" />
+          <Property Type="DateTime" Name="DateDebut" Nullable="true" Precision="3" />
+          <Property Type="DateTime" Name="DateFin" Nullable="true" Precision="3" />
+          <Property Type="String" Name="ReferenceFacturation" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="DateTime" Name="DateFacturation" Nullable="true" Precision="3" />
+          <Property Type="Int32" Name="Facturation" Nullable="true" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ActiviteTable" Relationship="StaffingModel.ActivityTableMissionTable" FromRole="MissionTable" ToRole="ActivityTable" />
+          <Property Type="Boolean" Name="Actif" Nullable="false" DefaultValue="True" />
+          <Property Type="String" Name="InterlocuteurNom" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="InterlocuteurTelephone" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="InterlocuteurEmail" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ClientTable" Relationship="StaffingModel.ClientTableMissionTable" FromRole="MissionTable" ToRole="ClientTable" />
+          <Property Type="Int32" Name="ClientTableID" Nullable="false" />
+        </EntityType>
+        <Association Name="ConsultantTableMissionTable">
+          <End Type="StaffingModel.MissionTable" Role="MissionTable" Multiplicity="*" />
+          <End Type="StaffingModel.ConsultantTable" Role="ConsultantTable" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="ConsultantTable">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MissionTable">
+              <PropertyRef Name="ConsultantTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ActiviteTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CompteRenduActiviteTableID" Nullable="false" />
+          <NavigationProperty Name="CompteRenduActiviteTable" Relationship="StaffingModel.FK_ActiviteCompteRenduActivite" FromRole="ActiviteTable" ToRole="CompteRenduActiviteTable" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="String" Name="Comment" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="Boolean" Name="Afternoon" Nullable="false" />
+          <NavigationProperty Name="MissionTable" Relationship="StaffingModel.ActivityTableMissionTable" FromRole="ActivityTable" ToRole="MissionTable" />
+          <Property Type="Int32" Name="MissionTableID" Nullable="true" />
+          <Property Type="Int32" Name="Day" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompteRenduActiviteTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ConsultantTableID" Nullable="false" />
+          <NavigationProperty Name="ActiviteTable" Relationship="StaffingModel.FK_ActiviteCompteRenduActivite" FromRole="CompteRenduActiviteTable" ToRole="ActiviteTable" />
+          <NavigationProperty Name="ConsultantTable" Relationship="StaffingModel.FK_CompteRenduActiviteConsultantTable" FromRole="CompteRenduActiviteTable" ToRole="ConsultantTable" />
+          <Property Type="Int32" Name="Year" Nullable="false" />
+          <Property Type="Int32" Name="Month" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ActiviteCompteRenduActivite">
+          <End Type="StaffingModel.CompteRenduActiviteTable" Role="CompteRenduActiviteTable" Multiplicity="1" />
+          <End Type="StaffingModel.ActiviteTable" Role="ActiviteTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompteRenduActiviteTable">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActiviteTable">
+              <PropertyRef Name="CompteRenduActiviteTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompteRenduActiviteConsultantTable">
+          <End Type="StaffingModel.ConsultantTable" Role="ConsultantTable" Multiplicity="1" />
+          <End Type="StaffingModel.CompteRenduActiviteTable" Role="CompteRenduActiviteTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConsultantTable">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CompteRenduActiviteTable">
+              <PropertyRef Name="ConsultantTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ActivityTableMissionTable">
+          <End Type="StaffingModel.ActiviteTable" Role="ActivityTable" Multiplicity="*" />
+          <End Type="StaffingModel.MissionTable" Role="MissionTable" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MissionTable">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActivityTable">
+              <PropertyRef Name="MissionTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="VacanceTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ConsultantTable" Relationship="StaffingModel.VacanceTableConsultantTable" FromRole="VacanceTable" ToRole="ConsultantTable" />
+          <Property Type="Int32" Name="ConsultantTableID" Nullable="false" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="DateTime" Name="DateDebut" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="DateFin" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Motif" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="Commentaire" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Boolean" Name="Actif" Nullable="false" DefaultValue="True" />
+        </EntityType>
+        <Association Name="VacanceTableConsultantTable">
+          <End Type="StaffingModel.VacanceTable" Role="VacanceTable" Multiplicity="*" />
+          <End Type="StaffingModel.ConsultantTable" Role="ConsultantTable" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="ConsultantTable">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VacanceTable">
+              <PropertyRef Name="ConsultantTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ClientTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="RaisonSociale" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="CodeClient" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="Boolean" Name="Actif" Nullable="false" />
+          <NavigationProperty Name="MissionTable" Relationship="StaffingModel.ClientTableMissionTable" FromRole="ClientTable" ToRole="MissionTable" />
+        </EntityType>
+        <Association Name="ClientTableMissionTable">
+          <End Type="StaffingModel.ClientTable" Role="ClientTable" Multiplicity="1" />
+          <End Type="StaffingModel.MissionTable" Role="MissionTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientTable">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MissionTable">
+              <PropertyRef Name="ClientTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StaffingModelStoreContainer" CdmEntityContainer="StaffingModelContainer">
+    <EntitySetMapping Name="ConsultantTable">
+      <EntityTypeMapping TypeName="IsTypeOf(StaffingModel.ConsultantTable)">
+        <MappingFragment StoreEntitySet="ConsultantTable">
+          <ScalarProperty Name="LiveEmail" ColumnName="LiveEmail" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="DateNaissance" ColumnName="DateNaissance" />
+          <ScalarProperty Name="NoSecu" ColumnName="NoSecu" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DateArrivee" ColumnName="DateArrivee" />
+          <ScalarProperty Name="DateDepart" ColumnName="DateDepart" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Actif" ColumnName="Actif" />
+          <ScalarProperty Name="Admin" ColumnName="Admin" />
+          <ScalarProperty Name="Poste" ColumnName="Poste" />
+          <ScalarProperty Name="AdresseRue" ColumnName="AdresseRue" />
+          <ScalarProperty Name="AdresseComplement" ColumnName="AdresseComplement" />
+          <ScalarProperty Name="AdresseCodePostal" ColumnName="AdresseCodePostal" />
+          <ScalarProperty Name="AdresseVille" ColumnName="AdresseVille" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MissionTable">
+      <EntityTypeMapping TypeName="IsTypeOf(StaffingModel.MissionTable)">
+        <MappingFragment StoreEntitySet="MissionTable">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Intitule" ColumnName="Intitule" />
+          <ScalarProperty Name="ConsultantTableID" ColumnName="ConsultantTableID" />
+          <ScalarProperty Name="DateDebut" ColumnName="DateDebut" />
+          <ScalarProperty Name="DateFin" ColumnName="DateFin" />
+          <ScalarProperty Name="ReferenceFacturation" ColumnName="ReferenceFacturation" />
+          <ScalarProperty Name="DateFacturation" ColumnName="DateFacturation" />
+          <ScalarProperty Name="Facturation" ColumnName="Facturation" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Actif" ColumnName="Actif" />
+          <ScalarProperty Name="InterlocuteurNom" ColumnName="InterlocuteurNom" />
+          <ScalarProperty Name="InterlocuteurTelephone" ColumnName="InterlocuteurTelephone" />
+          <ScalarProperty Name="InterlocuteurEmail" ColumnName="InterlocuteurEmail" />
+          <ScalarProperty Name="ClientTableID" ColumnName="ClientTableID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActiviteTable">
+      <EntityTypeMapping TypeName="IsTypeOf(StaffingModel.ActiviteTable)">
+        <MappingFragment StoreEntitySet="ActiviteTable">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CompteRenduActiviteTableID" ColumnName="CompteRenduActiviteTableID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Afternoon" ColumnName="Afternoon" />
+          <ScalarProperty Name="MissionTableID" ColumnName="MissionTableID" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompteRenduActiviteTable">
+      <EntityTypeMapping TypeName="IsTypeOf(StaffingModel.CompteRenduActiviteTable)">
+        <MappingFragment StoreEntitySet="CompteRenduActiviteTable">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ConsultantTableID" ColumnName="ConsultantTableID" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VacanceTable">
+      <EntityTypeMapping TypeName="IsTypeOf(StaffingModel.VacanceTable)">
+        <MappingFragment StoreEntitySet="VacanceTable">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ConsultantTableID" ColumnName="ConsultantTableID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="DateDebut" ColumnName="DateDebut" />
+          <ScalarProperty Name="DateFin" ColumnName="DateFin" />
+          <ScalarProperty Name="Motif" ColumnName="Motif" />
+          <ScalarProperty Name="Commentaire" ColumnName="Commentaire" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Actif" ColumnName="Actif" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientTable">
+      <EntityTypeMapping TypeName="IsTypeOf(StaffingModel.ClientTable)">
+        <MappingFragment StoreEntitySet="ClientTable">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RaisonSociale" ColumnName="RaisonSociale" />
+          <ScalarProperty Name="CodeClient" ColumnName="CodeClient" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Actif" ColumnName="Actif" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
