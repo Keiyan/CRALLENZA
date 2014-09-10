@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Security.Policy;
 using Cellenza.Service.Data.DataExtention;
 using Cellenza.Service.Model;
 using System.Collections.Generic;
@@ -74,8 +76,8 @@ namespace Cellenza.Service.Data
         {
             using (var entity = new StaffingModelContainer())
             {
-                var elt = entity.ConsultantTable.Single(o => o.Nom == name && o.Actif);
-                return elt.CreateApplicationConsultant();
+                var elt = entity.ConsultantTable.SingleOrDefault(o => o.Nom.ToLower() == name.ToLower() && o.Actif);
+                return elt != null ? elt.CreateApplicationConsultant() : null;
             }
         }
     }

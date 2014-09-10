@@ -12,5 +12,7 @@ namespace Cellenza.Service.Business
             var result = JsonConvert.SerializeObject(cras);
             return result;
         }
+
+        public static string CreateActivities()
     }
 }
