@@ -25,7 +25,6 @@ textarea {
 
 
 
-
 .btn-primary[disabled],
 .btn-primary.disabled,
 .btn-primary {
@@ -169,4 +168,17 @@ textarea {
         background-color: #b1b1b1;
         opacity: .8;
         color: #fff;
+    }
+     .responsive-calendar .day{
+         
+         border:solid 1px #fff;
+     }
+
+    .responsive-calendar .sat, .responsive-calendar .sun {
+        background-color: #b1b1b1;
+         opacity: .5;
+    }
+
+    .responsive-calendar .day .active {
+        background-color: #b1cd00;
     }
