@@ -183,3 +183,5 @@ textarea {
     background: #b1cd00;
     color: #ffffff;
 }
+
+    .no-close .ui-dialog-titlebar-close {display: none }

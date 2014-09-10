@@ -6,6 +6,7 @@
     <br /><br />
     <div class="container">
         <input id="btnAddCra" type="button" class="btn btn-turquoise" value="Saisir CRA" />
+        <input id="btnGenerateCra" type="button" class="btn btn-turquoise" value="Générer CRA" />
         <br /><br />
        
         <div class="includeCalendar">
@@ -70,6 +71,10 @@
     </div>
 </div>
 
+<div id="loading">
+
+</div>
+
 @section Scripts {
     <script src="~/Scripts/vendors/FullCalendar/fullcalendar.min.js"></script>
     <script type="text/javascript">
@@ -109,12 +114,9 @@
 
             InitCalendar();
 
-
             $("body").on("click", "#btnAddCra", function () {
                 $('#modalCra').modal('show');
             });
-
-
 
             $('#dateBegin').datepicker();
             $('#dateEnd').datepicker();
@@ -124,13 +126,8 @@
                 var dateBegin = $('#dateBegin').val();
                 var dateEnd = $('#dateEnd').val();
                 var activity = $('#activity').val();
-
                 var dateb = dateBegin.substring(6, 10) + '-' + dateBegin.substring(0, 2) + '-' + dateBegin.substring(3, 5);
-
-
                 var datef = dateBegin.substring(6, 10) + '-' + dateBegin.substring(0, 2) + '-' + dateBegin.substring(3, 5);
-
-
                 dateb = new Date(dateBegin.substring(6, 10), eval(dateBegin.substring(0, 2)) - 1, dateBegin.substring(3, 5));
                 datef = new Date(dateEnd.substring(6, 10), eval(dateEnd.substring(0, 2)) - 1, dateEnd.substring(3, 5));
 
@@ -146,13 +143,9 @@
                  },
                  true // make the event "stick"
              );
-
                 // $('#calendar').fullCalendar('updateEvent');
-
                 $('#modalCra').modal('hide');
             });
-
-
 
             function InitCalendar() {
                 // Init calendar
@@ -197,14 +190,38 @@
                         }
                     }, localeCalendar)
                 );
-
                 //$calendar.find('.fc-today').trigger('click');
-
                 //$calendar.find('.fc-header').remove();
-
             }
 
-          
+            $("body").on("click", "#btnGenerateCra", function () {
+                GenerateCRA();
+            });
+
+            function GenerateCRA() {
+                jQuery.support.cors = true;
+                $.ajax({
+                    url: 'http://localhost:4631/CRA/2014/09/TRAN',
+                    type: 'GET',
+                    dataType: 'json',
+                    beforeSend: function () {
+                        $("#loading").dialog('open').html("<p>Veuillez patientez...</p>");
+                    },
+                    success: function (data) {
+                        WriteResponse(data);
+                    },
+                    error: function (x, y, z) {
+                        alert(x + '\n' + y + '\n' + z);
+                    }
+                });
+            }
+
+            $("#loading").dialog({
+                hide: 'slide',
+                show: 'slide',
+                autoOpen: false,
+                dialogClass: 'no-close'
+            });
 
         });
     </script>

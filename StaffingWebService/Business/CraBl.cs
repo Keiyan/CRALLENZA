@@ -13,6 +13,6 @@ namespace Cellenza.Service.Business
             return result;
         }
 
-        public static string CreateActivities()
+        public static string CreateActivities() { return string.Empty; }
     }
 }
