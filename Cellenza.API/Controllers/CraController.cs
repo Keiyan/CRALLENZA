@@ -15,8 +15,18 @@ namespace Cellenza.API.Controllers
             return CraBl.GetCra(year, month, user);
         }
 
+        public class PostData
+        {
+            public string Activity { get; set; }
+            public string StartDate { get; set; }
+            public string EndDate { get; set; }
+        }
+
         [HttpPost]
-        public bool Save()
+        public bool Save(int year
+            , int month
+            , int user
+            , PostData data)
         {
             return false;
         }

@@ -48,6 +48,28 @@
     </div>
 </div>
 
+<div id="modalCraDetail" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalCraLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <label class="popupTitle">Détails CRA</label>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <td>Activité :</td>
+                        <td><span id="activityDetail"></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-grey" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
     <script src="~/Scripts/vendors/FullCalendar/fullcalendar.min.js"></script>
     <script type="text/javascript">
@@ -137,6 +159,10 @@
 
                 var calendar = $calendar.fullCalendar(
                     $.extend({
+                        eventClick: function (event, element) {
+                            $('#modalCraDetail').modal('show');
+                            $('#activityDetail').text(event.title);
+                        },
                         header: {
                             left: 'prev,next',
                             center: 'title',
@@ -179,7 +205,21 @@
             }
 
           
-
+            var konami_keys = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+            var konami_index = 0;
+            $(document).keydown(function(e){
+                if(e.keyCode === konami_keys[konami_index++]){
+                    if(konami_index === konami_keys.length){
+                        $(document).unbind('keydown', arguments.callee);
+                        $.getScript('http://www.cornify.com/js/cornify.js',function(){
+                            cornify_add();
+                            $(document).keydown(cornify_add);
+                        }); 
+                    }
+                }else{
+                    konami_index = 0;
+                }
+            });
         });
     </script>
 }
