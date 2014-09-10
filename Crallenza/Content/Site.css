@@ -30,8 +30,8 @@ textarea {
 .btn-primary {
     background-image: none;
     filter: none;
-    border: 1px solid #ee6a00;
-    background-color: #ee6a00;
+    border: 1px solid #612084;
+    background-color: #612084;
     -webkit-transition-property: background-color;
     -webkit-transition-duration: 0.5s;
     -moz-transition-property: background-color;
@@ -46,9 +46,9 @@ textarea {
     .btn-primary:hover {
         background-image: none;
         filter: none;
-        border: 1px solid #ee6a00;
+        border: 1px solid #dd1578;
         /*background-color: rgba(0,238,106,.9);*/
-        background-color: #ee6a00;
+        background-color: #dd1578;
         opacity: .8;
     }
 
@@ -56,7 +56,7 @@ textarea {
         background-image: none;
         filter: none;
         border: 1px solid #008eac;
-        background-color: #ee6a00;
+        background-color: #dd1578;
         opacity: .8;
     }
 
@@ -79,8 +79,8 @@ textarea {
 .btn-turquoise {
     background-image: none;
     filter: none;
-    border: 1px solid #008eac;
-    background-color: #008eac;
+    border: 1px solid #29bed6;
+    background-color: #29bed6;
     -webkit-transition-property: background-color;
     -webkit-transition-duration: 0.5s;
     -moz-transition-property: background-color;
@@ -169,19 +169,26 @@ textarea {
         opacity: .8;
         color: #fff;
     }
-     .responsive-calendar .day{
          
-         border:solid 1px #fff;
+
+.violet {
+    color: #612084;
+}
+         
+.bleu {
+    color: #29bed6;
      }
 
-    .responsive-calendar .sat, .responsive-calendar .sun {
-        background-color: #b1b1b1;
-         opacity: .5;
+.gris {
+    color: #d3d3d3;
+}
+
+.rose {
+    color: #dd1578;
     }
 
-    .responsive-calendar .day.today a {
-    background: #b1cd00;
-    color: #ffffff;
+.badge {
+    background-color: #dd1578;
 }
 
     .no-close .ui-dialog-titlebar-close {display: none }

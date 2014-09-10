@@ -5,7 +5,7 @@ using Cellenza.Service.Model;
 
 namespace Cellenza.Service.Data
 {
-    internal class HolidayDAL
+    public class HolidayDAL
     {
         internal static IEnumerable<Holiday> GetHolidays(int? consultantId)
         {
