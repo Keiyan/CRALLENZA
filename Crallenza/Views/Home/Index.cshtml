@@ -47,6 +47,28 @@
     </div>
 </div>
 
+<div id="modalCraDetail" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalCraLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <label class="popupTitle">Détails CRA</label>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <td>Activité :</td>
+                        <td><span id="activityDetail"></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-grey" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
     <script src="~/Scripts/vendors/FullCalendar/fullcalendar.min.js"></script>
     <script type="text/javascript">
@@ -163,6 +185,13 @@
                         }
                     }, localeCalendar)
                 );
+
+                $('#calendar').fullCalendar({
+                    eventClick: function (event, element) {
+                        $('#modalCraDetail').modal('show');
+                        $('#activityDetail').text(event.title);
+                    }
+                });
 
                 //$calendar.find('.fc-today').trigger('click');
                 //displayMonth(calendar);
