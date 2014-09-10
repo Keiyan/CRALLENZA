@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="917d018b19044699baac0a60630e92a0" Name="Diagramme1" ZoomLevel="108">
+        <EntityTypeShape EntityType="StaffingModel.ConsultantTable" Width="1.5" PointX="3.375" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StaffingModel.MissionTable" Width="1.5" PointX="9.75" PointY="0.875" />
+        <AssociationConnector Association="StaffingModel.ConsultantTableMissionTable" />
+        <EntityTypeShape EntityType="StaffingModel.ActiviteTable" Width="1.5" PointX="7.625" PointY="0.875" />
+        <EntityTypeShape EntityType="StaffingModel.CompteRenduActiviteTable" Width="1.5" PointX="5.5" PointY="0.875" />
+        <AssociationConnector Association="StaffingModel.FK_ActiviteCompteRenduActivite" />
+        <AssociationConnector Association="StaffingModel.FK_CompteRenduActiviteConsultantTable" />
+        <AssociationConnector Association="StaffingModel.ActivityTableMissionTable" />
+        <EntityTypeShape EntityType="StaffingModel.VacanceTable" Width="1.5" PointX="1.25" PointY="0.875" />
+        <AssociationConnector Association="StaffingModel.VacanceTableConsultantTable" />
+        <EntityTypeShape EntityType="StaffingModel.ClientTable" Width="1.5" PointX="11.875" PointY="0.875" />
+        <AssociationConnector Association="StaffingModel.ClientTableMissionTable" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
